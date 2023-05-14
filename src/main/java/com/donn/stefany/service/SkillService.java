@@ -1,0 +1,57 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.donn.stefany.service;
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.donn.stefany.interfaces.ISkillService;
+import com.donn.stefany.model.Skill;
+import com.donn.stefany.repository.SkillRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SkillService implements ISkillService {
+
+    @Autowired
+    public SkillRepository skillRepo;
+
+    @Override
+    public List<Skill> getSkills() {
+        return skillRepo.findAll();
+    }
+
+    @Override
+    public void saveSkill(Skill skill) {
+        skillRepo.save(skill);
+    }
+
+    @Override
+    public void deleteSkill(Long id) {
+        skillRepo.deleteById(id);
+    }
+
+    @Override
+    public Skill findSkillById(Long id) {
+        return skillRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public Skill updateSkill(Skill skill, Long skill_id) {
+        Optional<Skill> localSkill = skillRepo.findById(skill_id);
+        Skill skilli = null;
+        if (localSkill.isPresent()) {
+            skilli = localSkill.get();
+            skilli.setLevel(skill.getLevel());
+            skilli.setName(skill.getName());
+            skilli = skillRepo.save(skilli);
+        }
+        return skilli;
+    }
+
+}
