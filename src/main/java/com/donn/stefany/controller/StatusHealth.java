@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class StatusHealth {
-    @RequestMapping("/status")
+    @RequestMapping("/")
     @ResponseStatus(HttpStatus.OK)
     public void getStatus() {
     }
