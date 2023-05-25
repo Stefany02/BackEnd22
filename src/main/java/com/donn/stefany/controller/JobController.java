@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import com.donn.stefany.interfaces.IJobService;
 import com.donn.stefany.model.Job;
 
+import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
 @RestController
 @RequestMapping("/jobs")
 public class JobController {
