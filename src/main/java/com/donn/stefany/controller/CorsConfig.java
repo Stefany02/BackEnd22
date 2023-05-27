@@ -2,15 +2,15 @@ package com.donn.stefany.controller;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @RestController
+@CrossOrigin(origins = {"https://portfoliostefany.web.app/portfolio","http://localhost:4200"})
 @Configuration
 public class CorsConfig {
-
-   
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
